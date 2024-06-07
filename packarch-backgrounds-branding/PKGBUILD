@@ -1,0 +1,21 @@
+# Maintainer: Aditya Shakya <adi1090x@gmail.com>
+
+pkgname=packarch-backgrounds-branding
+pkgver=1.0
+pkgrel=6
+pkgdesc="Branding wallpapers for Packarch"
+arch=('any')
+url="https://github.com/packarch-os/packarch-wallpapers"
+license=('GPL3')
+groups=(packarch-wallpapers)
+options=(!strip !emptydirs)
+
+prepare() {
+	cp -af ../files/. "$srcdir"
+}
+
+package() {
+	local _bgdir="$pkgdir"/usr/share/backgrounds/packarch
+	mkdir -p "$_bgdir"
+	cp -r "$srcdir"/* "$_bgdir"
+}
